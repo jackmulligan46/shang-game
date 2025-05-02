@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shang Card Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- Title Screen -->
+    <div id="title-screen" style="text-align: center; padding-top: 100px; background: url('images/background.png') center/cover no-repeat; height: 100vh;">
+      <h1 style="font-size: 4rem; color: white; text-shadow: 2px 2px 8px #000;"></h1>
+      <button id="start-game-button" style="padding: 16px 32px; font-size: 1.5rem; margin-top: 300px;">Start Game</button>
+      <br/>
+      <button id="view-stats-button" style="margin-top: -50px;">View Stats</button>
+      <button id="view-rules-button" style="margin-top: -10px;">View Rules</button>
+    </div>
+  
+    <!-- Game Area: Hidden at first -->
+    <div id="main-container" style="display: none;">
+      <div id="win-message" style="display: none; text-align: center; font-size: 3rem; color: black; margin: 30px;">
+        YOU WIN
+      </div>  
+      <div id="lose-message" style="display: none; text-align: center; font-size: 3rem; color: red; margin: 30px;">
+        YOU LOSE
+      </div>  
+    
+    <!-- Game Area -->
+    <div id="game-board" style="display: none;">
+      <!-- Player Hands -->
+      <!-- Card Table Layout -->
+<div id="table-circle">
+    <div class="player-seat top" id="bot-2-hand"></div>
+    <div class="player-seat left" id="bot-1-hand">
+        <div class="bot-hand-inner"></div>
+      </div>
+      
+      <div class="player-seat right" id="bot-3-hand">
+        <div class="bot-hand-inner"></div>
+      </div>
+      
+    <div class="player-seat bottom" id="your-cards"></div>
+<!-- Active + Discard Piles -->
+<!-- Active + Discard Piles vertically stacked -->
+<div id="pile-wrapper">
+    <div id="discard-pile" class="card-container"></div>
+    <div id="table-cards" class="card-container"></div>
+  </div>  
+</div>
+    
+  
+  <!-- Controls for Your Hand -->
+  <div id="player-controls" class="hand-section">
+    <h2>Your Hand</h2>
+    <label for="sort-method">Sort:</label>
+    <select id="sort-method">
+      <option value="rank">Sort by Number</option>
+      <option value="suit">Sort by Suit</option>
+      <option value="manual">Manual Sort</option>
+    </select>
+    <button id="play-button">Play Selected</button>
+    <button id="check-button">Check</button>
+    <button id="new-game-button" style="display: none;">New Game</button>
+  </div>
+  
+    </div>
+
+<!-- Sidebar for Scoreboard + Log -->
+<div id="sidebar" style="display: none;">
+    <!-- Scoreboard -->
+    <div id="scoreboard"> 
+      <h3>Scoreboard</h3>
+      <ul id="score-list"></ul>
+    </div>
+  
+    <!-- Game Log -->
+    <div id="game-log">
+      <h3>Game Log</h3>
+      <div id="log-messages"></div>
+    </div>
+  </div>
+
+
+  <script type="module" src="script.js" defer></script>
+</body>
+</html>

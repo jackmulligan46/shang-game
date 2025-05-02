@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shang Game Statistics</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Your Shang Statistics</h1>
+  <div id="statistics">
+    <ul id="stats-list">
+      <li>Total Games Won: <span id="stat-wins">0</span></li>
+      <li>Total Games Lost: <span id="stat-losses">0</span></li>
+      <li>Win %: <span id="stat-win-pct">0%</span></li>
+      <li>Total Hands Won: <span id="stat-hands-won">0</span></li>
+      <li>Total Hands Lost: <span id="stat-hands-lost">0</span></li>
+      <li>Hand Win %: <span id="stat-hand-win-pct">0%</span></li>
+      <li>Current Win Streak: <span id="stat-current-win">0</span></li>
+      <li>Current Loss Streak: <span id="stat-current-loss">0</span></li>
+      <li>Longest Win Streak: <span id="stat-best-win">0</span></li>
+      <li>Longest Loss Streak: <span id="stat-best-loss">0</span></li>
+    </ul>
+  </div>
+
+  <button onclick="window.location.href='index.html'">Back to Game</button>
+
+  <script>
+    const stats = JSON.parse(localStorage.getItem('shangStats')) || {};
+
+    function renderStats() {
+      const totalGames = (stats.gamesWon || 0) + (stats.gamesLost || 0);
+      const totalHands = (stats.handsWon || 0) + (stats.handsLost || 0);
+
+      document.getElementById('stat-wins').textContent = stats.gamesWon || 0;
+      document.getElementById('stat-losses').textContent = stats.gamesLost || 0;
+      document.getElementById('stat-win-pct').textContent = totalGames > 0 ? `${Math.round((stats.gamesWon / totalGames) * 100)}%` : "0%";
+
+      document.getElementById('stat-hands-won').textContent = stats.handsWon || 0;
+      document.getElementById('stat-hands-lost').textContent = stats.handsLost || 0;
+      document.getElementById('stat-hand-win-pct').textContent = totalHands > 0 ? `${Math.round((stats.handsWon / totalHands) * 100)}%` : "0%";
+
+      document.getElementById('stat-current-win').textContent = stats.currentWinStreak || 0;
+      document.getElementById('stat-current-loss').textContent = stats.currentLossStreak || 0;
+      document.getElementById('stat-best-win').textContent = stats.bestWinStreak || 0;
+      document.getElementById('stat-best-loss').textContent = stats.bestLossStreak || 0;
+    }
+
+    renderStats();
+  </script>
+</body>
+</html>
